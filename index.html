@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Imperial Solis | Luxury Hotel</title>
+  <link rel="preconnect" href="https://googleapis.com" />
+  <link rel="preconnect" href="https://gstatic.com" crossorigin />
+  <link href="https://googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header id="navbar" class="at-hero">
+    <div class="nav-inner">
+      <a href="#hero" class="logo">
+        <span class="logo-icon">✦</span>
+        <span class="logo-text">Imperial Solis Hotel</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#rooms">Rooms</a>
+        <a href="#offers">Offers</a>
+        <a href="#dining">Dining</a>
+        <a href="#amenities">Amenities</a>
+        <a href="#contact">Contact</a>
+        <a href="guest.html" style="color: var(--gold); font-weight: 700;">Guest Portal</a>
+      </nav>
+      <a href="#booking" class="nav-cta">Book Now</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section id="hero">
+    <div class="hero-bg">
+      <div class="hero-slide active" style="background-image:url('pexels-misbaa-eri-426041722-39894350.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('pexels-jack-zhang-321160704-38517469.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('pexels-misbaa-eri-426041722-36816426.jpg')"></div>
+    </div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Welcome to</p>
+      <h1 class="hero-title">Imperial <em>Solis</em></h1>
+      <p class="hero-subtitle">Where timeless elegance meets unparalleled luxury</p>
+      <div class="hero-actions">
+        <a href="#rooms" class="btn btn-primary">Explore Rooms</a>
+        <a href="#booking" class="btn btn-outline">Reserve Your Stay</a>
+      </div>
+    </div>
+
+    <div class="hero-dots">
+      <button class="dot active" data-slide="0" aria-label="Slide 1"></button>
+      <button class="dot" data-slide="1" aria-label="Slide 2"></button>
+      <button class="dot" data-slide="2" aria-label="Slide 3"></button>
+    </div>
+
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="section">
+    <div class="container about-grid">
+      <div class="about-image-wrap">
+         <img src="pexels-sasi-tha-37098094.jpg" alt="Imperial Solis Hotel lobby" />
+        <div class="about-badge">
+          <span class="badge-num">1</span>
+          <span class="badge-txt">Rated #1 Luxury Stay</span>
+        </div>
+      </div>
+
+      <div class="about-text">
+        <span class="section-label">Our Story</span>
+        <h2 class="section-title">A Legacy of <em>Refined Hospitality</em></h2>
+        <p>
+          Imperial Solis has been the benchmark of sophisticated living since its founding. Nestled at the crossroads of culture and comfort, our hotel offers an experience that transcends ordinary travel.
+        </p>
+        <p>
+          Every detail — from the hand-selected furnishings to the bespoke service — has been curated to ensure your stay is nothing short of extraordinary.
+        </p>
+
+        <div class="about-stats">
+          <div class="stat">
+            <span class="stat-num">48</span>
+            <span class="stat-lbl">Luxury Suites</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">5★</span>
+            <span class="stat-lbl">Rating</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">24/7</span>
+            <span class="stat-lbl">Concierge</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ROOMS ============ -->
+  <section id="rooms" class="section bg-dark">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label light">Accommodations</span>
+        <h2 class="section-title light">Our Rooms &amp; <em>Suites</em></h2>
+      </div>
+
+      <div class="rooms-grid">
+        <!-- Deluxe King Room -->
+        <div class="room-card">
+          <div class="room-img-wrap">
+            <img src="pexels-misbaa-eri-426041722-36767624.jpg" alt="Deluxe King Room" />
+            <div class="room-overlay">
+              <a href="#booking" class="btn btn-primary">Book This Room</a>
+            </div>
+          </div>
+          <div class="room-info">
+            <div class="room-meta">
+              <span class="room-type">Deluxe</span>
+              <span class="room-price">From R820 / night</span>
+            </div>
+            <h3 class="room-name">Deluxe King Room</h3>
+            <p class="room-desc">Spacious and serene, our Deluxe King room features panoramic views, a king-size bed, and premium amenities.</p>
+            <div class="room-features">
+              <span>King Bed</span>
+              <span>Soaking Tub</span>
+              <span>High-Speed Wi-Fi</span>
+              <span>Mini Bar</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Imperial Suite -->
+        <div class="room-card featured">
+          <span class="room-badge-label">Most Popular</span>
+          <div class="room-img-wrap">
+            <img src="pexels-misbaa-eri-426041722-36816426.jpg" alt="Imperial Suite" />
+            <div class="room-overlay">
+              <a href="#booking" class="btn btn-primary">Book This Room</a>
+            </div>
+          </div>
+          <div class="room-info">
+            <div class="room-meta">
+              <span class="room-type">Suite</span>
+              <span class="room-price">From R850 / night</span>
+            </div>
+            <h3 class="room-name">Imperial Suite</h3>
+            <p class="room-desc">Our flagship suite — a living masterpiece. Floor-to-ceiling windows, a private terrace, and bespoke service around the clock.</p>
+            <div class="room-features">
+              <span>King Bed</span>
+              <span>Jacuzzi</span>
+              <span>Butler Service</span>
+              <span>Private Terrace</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Solis Grand Room -->
+        <div class="room-card">
+          <div class="room-img-wrap">
+            <img src="pexels-misbaa-eri-426041722-39894350.jpg" alt="Solis Grand Room" />
+            <div class="room-overlay">
+              <a href="#booking" class="btn btn-primary">Book This Room</a>
+            </div>
+          </div>
+          <div class="room-info">
+            <div class="room-meta">
+              <span class="room-type">Grand</span>
+              <span class="room-price">From R1,250 / night</span>
+            </div>
+            <h3 class="room-name">Solis Grand Room</h3>
+            <p class="room-desc">Elevated luxury with twin seating areas, a walk-in wardrobe, and an oversized marble bathroom.</p>
+            <div class="room-features">
+              <span>King Bed</span>
+              <span>Walk-in Wardrobe</span>
+              <span>Marble Bath</span>
+              <span>Smart TV</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Executive Twin Room -->
+        <div class="room-card">
+          <div class="room-img-wrap">
+             <img src="pexels-vinod-c-1862669-5860693.jpg" alt="Executive Twin Room" />
+            <div class="room-overlay">
+              <a href="#booking" class="btn btn-primary">Book This Room</a>
+            </div>
+          </div>
+          <div class="room-info">
+            <div class="room-meta">
+              <span class="room-type">Executive</span>
+              <span class="room-price">From R980 / night</span>
+            </div>
+            <h3 class="room-name">Executive Twin Room</h3>
+            <p class="room-desc">Perfectly suited for business travelers or companions — refined comfort with two queen beds and a workspace.</p>
+            <div class="room-features">
+              <span>Twin Queen</span>
+              <span>Workspace</span>
+              <span>High-Speed Wi-Fi</span>
+              <span>Mini Bar</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Penthouse Suite -->
+        <div class="room-card">
+          <div class="room-img-wrap">
+            <img src="pexels-jack-zhang-321160704-38517469.jpg" alt="Penthouse Suite" />
+            <div class="room-overlay">
+              <a href="#booking" class="btn btn-primary">Book This Room</a>
+            </div>
+          </div>
+          <div class="room-info">
+            <div class="room-meta">
+              <span class="room-type">Penthouse</span>
+              <span class="room-price">From R1,400 / night</span>
+            </div>
+            <h3 class="room-name">Penthouse Suite</h3>
+            <p class="room-desc">The pinnacle of luxury at Imperial Solis. Sprawling two-level suite with a private rooftop lounge and a dedicated chef.</p>
+            <div class="room-features">
+              <span>King Bed</span>
+              <span>Private Chef</span>
+              <span>Rooftop Lounge</span>
+              <span>Infinity Bath</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="room-card">
+          <div class="room-img-wrap">
+            <img src="pexels-chrislyn-dsouza-424969149-34496701.jpg" alt="Garden View Room" />
+            <div class="room-overlay">
+              <a href="#booking" class="btn btn-primary">Book This Room</a>
+            </div>
+          </div>
+          <div class="room-info">
+            <div class="room-meta">
+              <span class="room-type">Classic</span>
+              <span class="room-price">From R780 / night</span>
+            </div>
+            <h3 class="room-name">Garden View Room</h3>
+            <p class="room-desc">Wake up to lush garden vistas. A tranquil escape with classic furnishings and all modern conveniences.</p>
+            <div class="room-features">
+              <span>Queen Bed</span>
+              <span>Garden View</span>
+              <span>Wi-Fi</span>
+              <span>Coffee Station</span>
+            </div>
+          </div>
+        </div>
+
+      <div class="room-card">
+          <div class="room-img-wrap">
+            <img src="shoham-avisrur-iSO22I2l5uc-unsplash.jpg" alt="Garden View Room" />
+            <div class="room-overlay">
+              <a href="#booking" class="btn btn-primary">Book This Room</a>
+            </div>
+          </div>
+          <div class="room-info">
+            <div class="room-meta">
+              <span class="room-type">Kiddies room</span>
+              <span class="room-price">From R300 / night</span>
+            </div>
+            <h3 class="room-name">Available in premium rooms</h3>
+            <p class="room-desc">Kiddies want their own room?We got you-Add an additional fee to get a suite with a kids room for a great deal.</p>
+            <div class="room-features">
+              <span>Single/Bunk Bed</span>
+              <span>Beach View</span>
+              <span>Wi-Fi</span>
+              <span>Play Area</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="room-card">
+          <div class="room-img-wrap">
+            <img src="pexels-quang-nguyen-vinh-222549-2476632.jpg" alt="Royal Ocean Villa">
+            <div class="room-overlay"><a href="#booking" class="btn btn-primary">Book This Room</a></div>
+          </div>
+          <div class="room-info">
+            <div class="room-meta"><span class="room-type">Villa</span><span class="room-price">From R1,650 / night</span></div>
+            <h3 class="room-name">Royal Ocean Villa</h3>
+            <p class="room-desc">Private coastal sanctuary with panoramic deck, plunge pool, and outdoor rain shower.</p>
+            <div class="room-features">
+              <span>Queen Bed</span>
+              <span>Garden View</span>
+              <span>Wi-Fi</span>
+              <span>Coffee Station</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- NEW PICTURE 2 IN ROOMS -->
+        <div class="room-card">
+          
+          <div class="room-img-wrap">
+            <img src="pexels-artbovich-7045945.jpg" alt="Presidential Loft">
+            <div class="room-overlay"><a href="#booking" class="btn btn-primary">Book This Room</a></div>
+          </div>
+          <div class="room-info">
+            <div class="room-meta"><span class="room-type">Signature</span><span class="room-price">From R1,900 / night</span></div>
+            <h3 class="room-name">Presidential Loft</h3>
+            <p class="room-desc">Double-height glass atrium, private dining room, grand piano, and personal concierge.</p>
+            <div class="room-features">
+              <span>King Bed</span>
+              <span>Private Chef</span>
+              <span>Rooftop Lounge</span>
+              <span>Infinity Bath</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ============ SPECIAL OFFERS ============ -->
+<section id="offers" class="section bg-dark">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label light">Exclusive Packages</span>
+      <h2 class="section-title light">Curated <em>Special Offers</em></h2>
+      <p class="section-intro" style="color: rgba(248, 246, 237, 0.7);">
+        Elevate your stay at Imperial Solis with seasonal privileges designed for romance, family getaways, and extended luxury.
+      </p>
+    </div>
+
+    <div class="offers-grid">
+      <!-- Offer 1 -->
+      <div class="offer-card">
+        <span class="offer-badge">Save 20%</span>
+        <span class="offer-tag">Extended Luxury</span>
+        <h3>Stay 3 Nights, Pay for 2</h3>
+        <p class="offer-price">From R1,640 <span>/ 3-night package</span></p>
+        <p class="offer-desc">
+          Unwind longer in our Deluxe King Room or Imperial Suite with a complimentary third night and daily Continental Morning breakfast for two.
+        </p>
+        <ul class="offer-perks">
+          <li>✦ 1 Complimentary Night</li>
+          <li>✦ Daily Breakfast at Solara</li>
+          <li>✦ Late Checkout (2:00 PM)</li>
+        </ul>
+        <a href="#booking" class="btn btn-primary">Claim Offer</a>
+      </div>
+
+      <!-- Offer 2 -->
+      <div class="offer-card featured-offer">
+        <span class="offer-badge">Most Popular</span>
+        <span class="offer-tag">Couples Escape</span>
+        <h3>Imperial Romance &amp; Spa Retreat</h3>
+        <p class="offer-price">R1,350 <span>/ night</span></p>
+        <p class="offer-desc">
+          An intimate escape featuring a rose-petal suite turndown, signature Rose Petal Martinis, and private Finnish sauna &amp; massage access.
+        </p>
+        <ul class="offer-perks">
+          <li>✦ 60-Min Couples Warm Stone Massage</li>
+          <li>✦ Welcome Champagne &amp; Canapés</li>
+          <li>✦ Private Rooftop Jacuzzi Session</li>
+        </ul>
+        <a href="#booking" class="btn btn-primary">Claim Offer</a>
+      </div>
+
+      <!-- Offer 3 -->
+      <div class="offer-card">
+        <span class="offer-badge">Family Deal</span>
+        <span class="offer-tag">Solis Family Getaway</span>
+        <h3>Kids Stay &amp; Dine Free</h3>
+        <p class="offer-price">R1,150 <span>/ night</span></p>
+        <p class="offer-desc">
+          Book any suite and receive an adjoining Kiddies Room at 50% off, complimentary Junior Menu meals, and full supervised Kids' Club access.
+        </p>
+        <ul class="offer-perks">
+          <li>✦ Adjoining Kiddies Room Included</li>
+          <li>✦ Free Kids' Meals Under 12</li>
+          <li>✦ Full WaterSlide &amp; Theatre Access</li>
+        </ul>
+        <a href="#booking" class="btn btn-primary">Claim Offer</a>
+      </div>
+
+      <!-- Offer 4 -->
+      <div class="offer-card">
+        <span class="offer-badge">Save 15%</span>
+        <span class="offer-tag">Early Bird Privilege</span>
+        <h3>Advance Purchase Suite Escape</h3>
+        <p class="offer-price">From R663 <span>/ night</span></p>
+        <p class="offer-desc">
+          Reserve your stay at least 14 days in advance to enjoy 15% off our best available room rates plus complimentary private airport transfers.
+        </p>
+        <ul class="offer-perks">
+          <li>✦ 15% Off All Room Categories</li>
+          <li>✦ Complimentary Chauffeur Transfer</li>
+          <li>✦ Priority Room Upgrade</li>
+        </ul>
+        <a href="#booking" class="btn btn-primary">Claim Offer</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+  <section id="kids" class="section kids-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Family Experiences</p>
+        <h2 class="section-title">Solis<br><em>Kids' Club</em></h2>
+        <p class="section-intro">Imperial Solis is a destination for the whole family. Our dedicated Kids' Club offers a world of wonder, adventure, and discovery — so little ones thrive while parents unwind.</p>
+      </div>
+      <div class="kids-grid">
+
+        <div class="kids-card kids-card--large">
+          <div class="kids-card__img">
+            <img src="megan-watson-2DTE3ePfnD8-unsplash.jpg" alt="Kids playroom" />
+          </div>
+          <div class="kids-card__body">
+            <span class="kids-tag">Play</span>
+            <h3>Adventure Playroom</h3>
+            <p>A wonderland of imagination — miniature houses, board games, building blocks, and cosy reading nooks await curious young minds.</p>
+          </div>
+        </div>
+
+        <div class="kids-card">
+          <div class="kids-card__img">
+            <img src="pexels-anasrul-muktafi-129685806-15737033.jpg" alt="Kids splash pool" />
+          </div>
+          <div class="kids-card__body">
+            <span class="kids-tag">Swim</span>
+            <h3>WaterSlide</h3>
+            <p>A dedicated kids' fun waterslide with gentle water features, sea sculptures, and slides — perfectly safe and endlessly fun.</p>
+          </div>
+        </div>
+
+         <div class="kids-card">
+          <div class="kids-card__img">
+            <img src="pexels-anasrul-muktafi-129685806-15737033.jpg" alt="Kids splash pool" />
+          </div>
+          <div class="kids-card__body">
+            <span class="kids-tag">Create</span>
+            <h3>Hands-On Activities</h3>
+            <p>Art, crafts, storytelling, and hands-on activities guided by our trained childcare team — sparking creativity every single day.</p>
+          </p>
+          </div>
+        </div>
+
+        <div class="kids-card">
+          <div class="kids-card__img">
+            <img src="abhishek-hajare-kkrXVKK-jhg-unsplash.jpg" alt="Kids dining" />
+          </div>
+          <div class="kids-card__body">
+            <span class="kids-tag">Dine</span>
+            <h3>Junior Menu</h3>
+            <p>Nutritious and delicious drinks available in different flavours crafted especially for children — colourful, fun to drink, and prepared by our award-winning chefs.</p>
+          </div>
+        </div>
+
+        <div class="kids-card">
+          <div class="kids-card__img">
+            <img src="WhatsApp Image 2026-11-15 at 12.00.26 (4).jpeg" alt="Indoor play area" />
+          </div>
+          <div class="kids-card__body">
+            <span class="kids-tag">Explore</span>
+            <h3>Indoor Play Area</h3>
+            <p>Soft-play hills, a rainbow ball pit, and slides all set beneath a sky-painted ceiling — a safe space to burn off energy rain or shine.</p>
+          </div>
+        </div>
+
+         <div class="kids-card">
+          <div class="kids-card__img">
+            <img src="hoyoun-lee-tQVWtm93yXw-unsplash.jpg" alt="Indoor play area" />
+          </div>
+          <div class="kids-card__body">
+            <span class="kids-tag">Entertainment</span>
+            <h3>Childrens Theatre</h3>
+            <p> kids can watch fun cosplays of their favourite cartoon characters-safe and supervised.</p>
+          </div>
+        </div>
+
+         <div class="kids-card">
+          <div class="kids-card__img">
+            <img src="asr-design-studio-3mtds3PygEw-unsplash.jpg" alt="Indoor play area" />
+          </div>
+          <div class="kids-card__body">
+            <span class="kids-tag">Create</span>
+            <h3>Childrens corner</h3>
+            <p>fun corner in premium kids rooms to spend time on-safe and supervised.</p>
+          </div>
+        </div>
+
+        <div class="kids-card kids-card--large">
+          <div class="kids-card__img">
+            <img src="samuel-lopez-cruz-a_hMEPZUmOM-unsplash.jpg" alt="Creative activity room" />
+          </div>
+          <div class="kids-card__body">
+            <span class="kids-tag">Fun</span>
+            <h3>Fun Jumping Castle</h3>
+            <p></div>An outdoor jumping castle for kids to play on and make friends.
+        </div>
+ 
+
+        
+
+      </div>
+
+      <div class="kids-cta">
+        <div class="kids-cta__text">
+          <h3>Supervised care, so you can truly relax.</h3>
+          <p>Our certified childcare team is on hand daily from 8am to 8pm. All activities are age-appropriate and complimentary for hotel guests.</p>
+        </div>
+        <a href="#booking" class="btn btn-primary">Book a Family Stay</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="dining" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Culinary Excellence</span>
+        <h2 class="section-title">Food &amp; <em>Dining</em></h2>
+        <p class="section-intro">
+          From sunrise breakfasts to candlelit dinners, every meal at Imperial Solis is a destination in itself. Our chefs craft each dish with seasonal ingredients and global inspiration.
+        </p>
+      </div>
+
+      <div class="dining-tabs">
+        <button class="dtab active" data-tab="all">All</button>
+        <button class="dtab" data-tab="breakfast">Breakfast</button>
+        <button class="dtab" data-tab="mains">Mains</button>
+        <button class="dtab" data-tab="drinks">Drinks &amp; Desserts</button>
+      </div>
+
+      <div class="dining-grid">
+        <div class="dining-card dining-card--large" data-category="breakfast">
+          <div class="dining-img">
+            <img src="pexels-ekrulila-17612444.jpg" alt="Coffee and bruschetta breakfast" />
+          </div>
+          <div class="dining-body">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span class="dining-tag">Breakfast</span>
+              <span style="font-weight:700; color:var(--burgundy); font-size:0.85rem;">R180</span>
+            </div>
+            <h3>Continental Morning</h3>
+          </div>
+        </div>
+
+        <div class="dining-card" data-category="breakfast">
+          <div class="dining-img">
+            <img src="pexels-kubranurcakiroglu-39008951.jpg" alt="Full mezze breakfast spread" />
+          </div>
+          <div class="dining-body">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span class="dining-tag">Breakfast</span>
+              <span style="font-weight:700; color:var(--burgundy); font-size:0.85rem;">R220</span>
+            </div>
+            <h3>The Imperial Spread</h3>
+          </div>
+        </div>
+        
+
+         <div class="dining-card" data-category="mains">
+          <div class="dining-img">
+            <img src="pexels-rahimegul-30216490.jpg" alt="Mediterranean starter plate with dips and toast" />
+          </div>
+          <div class="dining-body">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span class="dining-tag">Starter</span>
+              <span style="font-weight:700; color:var(--burgundy); font-size:0.85rem;">R120</span>
+            </div>
+            <h3>Garden Green Elixir</h3>
+          </div>
+        </div>
+
+
+        <div class="dining-card" data-category="mains">
+          <div class="dining-img">
+            <img src="pexels-khezez-29935507.jpg" alt="Braised beef with rice and blue cocktail" />
+          </div>
+          <div class="dining-body">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span class="dining-tag">Main</span>
+              <span style="font-weight:700; color:var(--burgundy); font-size:0.85rem;">R320</span>
+            </div>
+            <h3>Braised Short Rib</h3>
+          </div>
+        </div>
+
+        <div class="dining-card" data-category="mains">
+          <div class="dining-img">
+            <img src="pexels-kamrujjamanjewel-24866519.jpg" alt="Whole rotisserie spiced chicken" />
+          </div>
+          <div class="dining-body">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span class="dining-tag">Main</span>
+              <span style="font-weight:700; color:var(--burgundy); font-size:0.85rem;">R260</span>
+            </div>
+            <h3>Rotisserie Spiced Chicken</h3>
+          </div>
+        </div>
+
+        <div class="dining-card" data-category="mains">
+          <div class="dining-img">
+            <img src="pexels-valeriya-19859329.jpg" alt="Seared tuna salad plate" />
+          </div>
+          <div class="dining-body">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span class="dining-tag">Main</span>
+              <span style="font-weight:700; color:var(--burgundy); font-size:0.85rem;">R240</span>
+            </div>
+            <h3>Seared Tuna Salad</h3>
+          </div>
+        </div>
+
+        <div class="dining-card" data-category="mains">
+          <div class="dining-img">
+            <img src="sk-uVPV_nV17Tw-unsplash.jpg" alt="Spiced tomato and vegetable bowl" />
+          </div>
+          <div class="dining-body">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span class="dining-tag">Kids</span>
+              <span style="font-weight:700; color:var(--burgundy); font-size:0.85rem;">R110</span>
+            </div>
+            <h3>Burger &amp; Fries</h3>
+          </div>
+        </div>
+
+        <div class="dining-card" data-category="mains">
+          <div class="dining-img">
+            <img src="pexels-djavvadi-7166541.jpg" alt="Spiced tomato and vegetable bowl" />
+          </div>
+          <div class="dining-body">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span class="dining-tag">Plant-Based</span>
+              <span style="font-weight:700; color:var(--burgundy); font-size:0.85rem;">R195</span>
+            </div>
+            <h3>Heritage Spice Bowl</h3>
+          </div>
+        </div>
+
+        <div class="dining-card" data-category="drinks">
+          <div class="dining-img">
+            <img src="pexels-samed-bayrak-2518016-16148537.jpg" alt="Pink rose cocktail" />
+          </div>
+          <div class="dining-body">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span class="dining-tag">Cocktail</span>
+              <span style="font-weight:700; color:var(--burgundy); font-size:0.85rem;">R140</span>
+            </div>
+            <h3>Rose Petal Martini</h3>
+          </div>
+        </div>
+
+        <div class="dining-card" data-category="drinks">
+          <div class="dining-img">
+            <img src="pexels-thecactusena-28935588.jpg" alt="Acai berry dessert bowl" />
+          </div>
+          <div class="dining-body">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span class="dining-tag">Dessert</span>
+              <span style="font-weight:700; color:var(--burgundy); font-size:0.85rem;">R120</span>
+            </div>
+            <h3>Acai Bliss Bowl</h3>
+          </div>
+        </div>
+
+        <div class="dining-card" data-category="drinks">
+          <div class="dining-img">
+            <img src="pexels-nadin-sh-78971847-15419501.jpg" alt="Cottage cheese pancakes with berries" />
+          </div>
+          <div class="dining-body">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span class="dining-tag">Dessert</span>
+              <span style="font-weight:700; color:var(--burgundy); font-size:0.85rem;">R130</span>
+            </div>
+            <h3>Warm Syrniki</h3>
+          </div>
+        </div>
+
+        <div class="dining-card" data-category="drinks">
+          <div class="dining-img">
+            <img src="pexels-dhiraj-jain-207743066-15486347.jpg" alt="Crispy fried chicken tenders" />
+          </div>
+          <div class="dining-body">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span class="dining-tag">Dessert</span>
+              <span style="font-weight:700; color:var(--burgundy); font-size:0.85rem;">R115</span>
+            </div>
+            <h3>Solara Matcha Cream Cake</h3>
+          </div>
+        </div>
+
+        <div class="dining-card" data-category="drinks">
+          <div class="dining-img">
+            <img src="deva-williamson-S2jw81lfrG0-unsplash.jpg" alt="Crispy fried chicken tenders" />
+          </div>
+          <div class="dining-body">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span class="dining-tag">Kids Dessert</span>
+              <span style="font-weight:700; color:var(--burgundy); font-size:0.85rem;">R65</span>
+            </div>
+            <h3>Vanilla Cream Cupcake</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+
+  <section id="hotel-amenities" class="section bg-dark">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label light">Facilities</p>
+        <h2 class="section-title light">Hotel<br><em>Amenities</em></h2>
+        <p class="section-intro" style="color:rgba(248,246,237,0.7)">Every facility at Imperial Solis is designed to elevate your stay — from the moment you wake to the moment you sleep.</p>
+      </div>
+      <div class="ha-grid">
+
+        <div class="ha-card ha-card--large">
+          <img src="pexels-pavel-danilyuk-9119770.jpg" alt="Outdoor pool with sun loungers" />
+          <div class="ha-overlay">
+            <span class="ha-tag">Pool</span>
+            <h3>Outdoor Infinity Pool</h3>
+            <p>Sun-drenched pool deck with premium loungers and a swim-up bar under clear skies.</p>
+          </div>
+        </div>
+
+        <div class="ha-card">
+          <img src="pexels-waqas-ilyas-81841622-36877065.jpg" alt="Modern gym with equipment and large windows" />
+          <div class="ha-overlay">
+            <span class="ha-tag">Fitness</span>
+            <h3>Fitness Centre</h3>
+            <p>State-of-the-art equipment, weight racks and floor-to-ceiling windows with city views.</p>
+          </div>
+        </div>
+
+        <div class="ha-card">
+          <img src="pexels-eran-design-2158190390-35215411.jpg" alt="Yoga class in a bright airy studio" />
+          <div class="ha-overlay">
+            <span class="ha-tag">Wellness</span>
+            <h3>Yoga &amp; Pilates Studio</h3>
+            <p>Daily group sessions led by certified instructors in our light-filled, garden-facing studio.</p>
+          </div>
+        </div>
+
+        <div class="ha-card">
+          <img src="pexels-artbovich-7598363.jpg" alt="Traditional Finnish sauna with wooden benches" />
+          <div class="ha-overlay">
+            <span class="ha-tag">Spa</span>
+            <h3>Traditional Sauna</h3>
+            <p>Authentic Finnish wood sauna with birch fragrance, warm lighting and therapeutic steam.</p>
+          </div>
+        </div>
+
+        <div class="ha-card">
+          <img src="pexels-ahmetcotur-24807141.jpg" alt=" Hot tub at sunset with city skyline" />
+          <div class="ha-overlay">
+            <span class="ha-tag">Rooftop</span>
+            <h3>Rooftop Jacuzzi</h3>
+            <p>A seamless-edge pool at sunset, overlooking the entire city skyline from the highest vantage point.</p>
+          </div>
+        </div>
+
+        <div class="ha-card ha-card--large">
+          <img src="pexels-benni-fish-40038242-10509285.jpg" alt="Grand ballroom with crystal chandeliers" />
+          <div class="ha-overlay">
+            <span class="ha-tag">Events</span>
+            <h3>Grand Ballroom</h3>
+            <p>Dramatic crystal chandeliers, a grand stage and banquet seating for up to 500 guests.</p>
+          </div>
+        </div>
+
+        <div class="ha-card">
+          <img src="pexels-tima-miroshnichenko-7991579.jpg" alt="Private cinema with plush seating" />
+          <div class="ha-overlay">
+            <span class="ha-tag">Entertainment</span>
+            <h3>Private Cinema</h3>
+            <p>80-seat screening room with Dolby Atmos surround sound and in-seat service.</p>
+          </div>
+        </div>
+
+        <div class="ha-card">
+          <img src="pexels-perqued-13722863.jpg" alt="White marble rainfall shower with gold fixtures" />
+          <div class="ha-overlay">
+            <span class="ha-tag">Rooms</span>
+            <h3>Marble Rain Shower</h3>
+            <p>Floor-to-ceiling white Italian marble with an oversized rainfall head and gold fixtures.</p>
+          </div>
+        </div>
+
+        <div class="ha-card">
+          <img src="pexels-ela-de-pure-1402904686-33599113.jpg" alt="Double vessel sink marble vanity with wood accents" />
+          <div class="ha-overlay">
+            <span class="ha-tag">Rooms</span>
+            <h3>Designer Vanity Suite</h3>
+            <p>Double vessel sinks set into a hand-finished marble counter with warm wood accents.</p>
+          </div>
+        </div>
+
+        <div class="ha-card">
+          <img src="pexels-mr-dieds-400575610-15879552.jpg" alt="Dark luxury marble bathroom with ambient lighting" />
+          <div class="ha-overlay">
+            <span class="ha-tag">Entertainment</span>
+            <h3>Imperial Solis Bar</h3>
+            <p>Luxury and Grand bar with good music and ambient lighting.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  
+
+  <section id="feedback" class="section bg-dark">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label light">Guest Reviews</p>
+        <h2 class="section-title light">What Our Guests<br><em>Say</em></h2>
+      </div>
+
+      <div class="reviews-strip">
+        <div class="review-card">
+          <div class="review-stars">
+            <span class="star filled">&#9733;</span><span class="star filled">&#9733;</span><span class="star filled">&#9733;</span><span class="star filled">&#9733;</span><span class="star filled">&#9733;</span>
+          </div>
+          <p class="review-text">"Absolutely flawless from check-in to check-out. The Imperial Suite is worth every rand — the terrace jacuzzi at sunset is a memory I will carry for life."</p>
+          <div class="review-author">
+            <div class="review-avatar">NM</div>
+            <div>
+              <strong>Naledi M.</strong>
+              <span>Johannesburg, SA</span>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">
+            <span class="star filled">&#9733;</span><span class="star filled">&#9733;</span><span class="star filled">&#9733;</span><span class="star filled">&#9733;</span><span class="star filled">&#9733;</span>
+          </div>
+          <p class="review-text">"The Solara Restaurant is a destination on its own. The chef's tasting menu was extraordinary — course after course of unexpected brilliance."</p>
+          <div class="review-author">
+            <div class="review-avatar">JV</div>
+            <div>
+              <strong>Jacques V.</strong>
+              <span>Cape Town, SA</span>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">
+            <span class="star filled">&#9733;</span><span class="star filled">&#9733;</span><span class="star filled">&#9733;</span><span class="star filled">&#9733;</span><span class="star">&#9733;</span>
+          </div>
+          <p class="review-text">"The Kids' Club was a game-changer for our family trip. Our children didn't want to leave. Staff were warm, attentive and genuinely caring."</p>
+          <div class="review-author">
+            <div class="review-avatar">TP</div>
+            <div>
+              <strong>Thandi P.</strong>
+              <span>Durban, SA</span>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">
+            <span class="star filled">&#9733;</span><span class="star filled">&#9733;</span><span class="star filled">&#9733;</span><span class="star filled">&#9733;</span><span class="star filled">&#9733;</span>
+          </div>
+          <p class="review-text">"The Solis Spa is heaven. The traditional sauna followed by the warm stone massage left me feeling completely renewed. I'll be back."</p>
+          <div class="review-author">
+            <div class="review-avatar">AK</div>
+            <div>
+              <strong>Amara K.</strong>
+              <span>Pretoria, SA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feedback-form-wrap">
+        <h3>Share Your Experience</h3>
+        <form class="feedback-form" id="feedbackForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fbName">Your Name</label>
+              <input type="text" id="fbName" placeholder="Full name" required />
+            </div>
+            <div class="form-group">
+              <label for="fbEmail">Email</label>
+              <input type="email" id="fbEmail" placeholder="your@email.com" required />
+            </div>
+          </div>
+          <div class="form-group full">
+            <label>Overall Rating</label>
+            <div class="star-rating" id="starRating">
+              <span class="rate-star" data-val="1">&#9733;</span>
+              <span class="rate-star" data-val="2">&#9733;</span>
+              <span class="rate-star" data-val="3">&#9733;</span>
+              <span class="rate-star" data-val="4">&#9733;</span>
+              <span class="rate-star" data-val="5">&#9733;</span>
+            </div>
+            <input type="hidden" id="fbRating" value="0" />
+          </div>
+          <div class="rating-categories">
+            <div class="rating-cat">
+              <label>Rooms</label>
+              <div class="mini-stars" data-cat="rooms">
+                <span class="ms" data-val="1">&#9733;</span><span class="ms" data-val="2">&#9733;</span><span class="ms" data-val="3">&#9733;</span><span class="ms" data-val="4">&#9733;</span><span class="ms" data-val="5">&#9733;</span>
+              </div>
+            </div>
+            <div class="rating-cat">
+              <label>Dining</label>
+              <div class="mini-stars" data-cat="dining">
+                <span class="ms" data-val="1">&#9733;</span><span class="ms" data-val="2">&#9733;</span><span class="ms" data-val="3">&#9733;</span><span class="ms" data-val="4">&#9733;</span><span class="ms" data-val="5">&#9733;</span>
+              </div>
+            </div>
+            <div class="rating-cat">
+              <label>Service</label>
+              <div class="mini-stars" data-cat="service">
+                <span class="ms" data-val="1">&#9733;</span><span class="ms" data-val="2">&#9733;</span><span class="ms" data-val="3">&#9733;</span><span class="ms" data-val="4">&#9733;</span><span class="ms" data-val="5">&#9733;</span>
+              </div>
+            </div>
+            <div class="rating-cat">
+              <label>Amenities</label>
+              <div class="mini-stars" data-cat="amenities">
+                <span class="ms" data-val="1">&#9733;</span><span class="ms" data-val="2">&#9733;</span><span class="ms" data-val="3">&#9733;</span><span class="ms" data-val="4">&#9733;</span><span class="ms" data-val="5">&#9733;</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group full">
+            <label for="fbComment">Your Review</label>
+            <textarea id="fbComment" rows="4" placeholder="Tell us about your experience…" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit Review</button>
+          <p id="fbSuccess" class="contact-success hidden">Thank you for your review — we truly appreciate your feedback.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
+    <button class="lb-prev" id="lbPrev" aria-label="Previous">&#8249;</button>
+    <button class="lb-next" id="lbNext" aria-label="Next">&#8250;</button>
+    <div class="lb-img-wrap">
+      <img id="lbImg" src="" alt="Gallery image" />
+    </div>
+  </div>
+
+  <section id="booking" class="section booking-section">
+    <div class="booking-bg" style="background-image:url('pexels-misbaa-eri-426041722-36816426.jpg')"></div>
+    <div class="booking-overlay"></div>
+    <div class="container booking-content">
+      <div class="section-header">
+        <p class="section-label light">Reservations</p>
+        <h2 class="section-title light">Book Your<br><em>Stay</em></h2>
+      </div>
+      <form class="booking-form" id="bookingForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="guestName">Full Name</label>
+            <input type="text" id="guestName" placeholder="Your full name" required />
+          </div>
+          <div class="form-group">
+            <label for="guestEmail">Email</label>
+            <input type="email" id="guestEmail" placeholder="your@email.com" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="checkIn">Check-In</label>
+            <input type="date" id="checkIn" required />
+          </div>
+          <div class="form-group">
+            <label for="checkOut">Check-Out</label>
+            <input type="date" id="checkOut" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="roomType">Room Type</label>
+            <select id="roomType" required>
+               <option value="Garden View Room">Garden View Room — From R780 / night</option>
+              <option value="Deluxe King Room">Deluxe King Room — From R820 / night</option>
+              <option value="Imperial Suite">Imperial Suite — From R850 / night</option>
+              <option value="Executive Twin Room">Executive Twin Room — From R980 / night</option>
+              <option value="Solis Grand Room">Solis Grand Room — From R1,250 / night</option>
+              <option value="Penthouse Suite">Penthouse Suite — From R1,400 / night</option>
+              <option value="Royal Ocean Villa">Royal Ocean Villa — From R1,650 / night</option>
+              <option value="Presidential Suite">Presidential Suite — From R1,900 / night</option>
+              <option value="Available in premium">Kiddies Room Add-on — From R300 / night</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="guests">Guests</label>
+            <select id="guests" required>
+              <option value="" disabled selected>Number of guests</option>
+              <option value="1">1 Guest</option>
+              <option value="2">2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+               <option value="5">5 Guests</option>
+              <option value="6">6 Guests</option>
+              </select>
+          </div>
+        </div>
+        <div class="form-group full">
+          <label for="requests">Special Requests</label>
+          <textarea id="requests" rows="3" placeholder="Any special requests or preferences…"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">Confirm Reservation</button>
+      </form>
+      <div id="formSuccess" class="form-success hidden">
+        <span>✦</span>
+        <h3>Your reservation request has been received.</h3>
+        <p>Our concierge team will confirm your booking within 24 hours.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="container contact-grid">
+      <div class="contact-info">
+        <p class="section-label">Get in Touch</p>
+        <h2 class="section-title">Contact &amp;<br><em>Location</em></h2>
+        <ul class="contact-list">
+          <li>
+            <span class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <div>
+              <strong>Address</strong>
+              <p>1 Imperial Solis Boulevard,<br>Grand Promenade District</p>
+            </div>
+          </li>
+          <li>
+            <span class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.07 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </span>
+            <div>
+              <strong>Phone</strong>
+              <p>+27 670 76 3052</p>
+            </div>
+          </li>
+          <li>
+            <span class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </span>
+            <div>
+              <strong>Email</strong>
+              <p>lifecyclem4@gmail.com</p>
+            </div>
+          </li>
+          <li>
+            <span class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </span>
+            <div>
+              <strong>Concierge Hours</strong>
+              <p>24 hours a day, 7 days a week</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="contact-form-wrap">
+        <form class="contact-form" id="contactForm" novalidate>
+          <h3>Send a Message</h3>
+          <div class="form-group">
+            <label for="cName">Name</label>
+            <input type="text" id="cName" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label for="cEmail">Email</label>
+            <input type="email" id="cEmail" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="cMessage">Message</label>
+            <textarea id="cMessage" rows="4" placeholder="How can we assist you?" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+          <p id="contactSuccess" class="contact-success hidden">Thank you — we'll be in touch shortly.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a class="logo" href="#hero">
+          <span class="logo-icon">✦</span>
+          <span class="logo-text">Imperial Solis</span>
+        </a>
+        <p>Where timeless elegance meets unparalleled luxury.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#rooms">Rooms</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#kids">Kids' Club</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#booking">Book Now</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Policies</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+          <li><a href="#">Cancellation Policy</a></li>
+          <li><a href="#">Accessibility</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="social-links">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="Facebook">FB</a>
+          <a href="#" aria-label="Twitter">TW</a>
+          <a href="#" aria-label="Pinterest">PT</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Imperial Solis. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

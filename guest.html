@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Imperial Solis Hotel | Guest Booking &amp; Concierge Portal</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://googleapis.com" rel="stylesheet">
+  <style>
+    .portal-wrap { max-width: 1450px; margin: 6.5rem auto 4rem; padding: 0 1.5rem; overflow-x: auto; }
+    .portal-card { background: var(--white); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); border-top: 3px solid var(--gold); margin-bottom: 2rem; }
+    
+    /* Side-by-Side Layout: Reservation Details (Left) & Add Dining & Activities (Right) */
+    .portal-grid {
+      display: grid;
+      grid-template-columns: minmax(380px, 1fr) minmax(420px, 1.25fr);
+      gap: 1.75rem;
+      align-items: start;
+    }
+
+    /* Inner Side-by-Side Columns for Food & Dining vs Hotel Amenities */
+    .extras-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .summary-row { display: flex; justify-content: space-between; padding: 0.65rem 0; border-bottom: 1px solid var(--ivory-dk); font-size: 0.88rem; }
+    .summary-total { font-size: 1.3rem; font-family: var(--ff-serif); color: var(--burgundy); font-weight: 600; border-top: 2px solid var(--gold); margin-top: 0.5rem; padding-top: 0.9rem; }
+    
+    .category-heading {
+      font-family: var(--ff-serif);
+      font-size: 1.25rem;
+      color: var(--burgundy);
+      font-weight: 600;
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 0.35rem;
+      margin: 0.2rem 0 0.8rem;
+      letter-spacing: 0.03em;
+    }
+
+    .extra-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 0.75rem;
+      background: var(--ivory);
+      margin-bottom: 0.5rem;
+      border-radius: var(--radius);
+      gap: 0.5rem;
+    }
+    .extra-item strong { font-size: 0.8rem; color: var(--text-dark); display: block; line-height: 1.3; }
+    .extra-item small { color: var(--burgundy); font-weight: 600; font-size: 0.75rem; }
+    .extra-item .btn { padding: 0.4rem 0.85rem; font-size: 0.65rem; flex-shrink: 0; }
+
+    .policy-box { background: rgba(80, 11, 26, 0.05); border-left: 4px solid var(--burgundy); padding: 1rem; margin: 1.1rem 0; font-size: 0.82rem; }
+    .payment-box { background: var(--ivory); border: 1px solid var(--gold); padding: 1.15rem; border-radius: var(--radius); margin-top: 1.25rem; }
+    .payment-box select, .payment-box input { width: 100%; padding: 0.65rem; margin-top: 0.35rem; margin-bottom: 0.8rem; border: 1px solid #cbd5e1; border-radius: 4px; background: var(--white); font-family: var(--ff-sans); font-size: 0.83rem; color: var(--text-dark); }
+    .btn-danger { background: #8b1e24; color: #fff; border-color: #8b1e24; width: 100%; }
+    .btn-danger:hover { background: transparent; color: #8b1e24; }
+
+    @media (max-width: 1150px) {
+      .extras-columns { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .portal-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header id="navbar" class="scrolled">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">✦</span>
+        <span class="logo-text">Imperial Solis Hotel</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Back to Main Website</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="portal-wrap">
+    <!-- LOGIN PANEL -->
+    <div class="portal-card" id="loginCard" style="max-width: 520px; margin: 0 auto;">
+      <span class="section-label">Guest Access</span>
+      <h2 class="section-title">Manage Your <em>Stay</em></h2>
+      <p style="font-size: 0.88rem; color: var(--text-mid); margin-bottom: 1.5rem;">
+        Enter your registered email address and the booking reference number shown on the confirmation page.
+      </p>
+      <form id="guestLoginForm" class="contact-form">
+        <div class="form-group">
+          <label>Registered Email (Gmail)</label>
+          <input type="email" id="loginEmail" name="email" placeholder="you@gmail.com" required />
+        </div>
+        <div class="form-group">
+          <label>Booking Reference Number</label>
+          <input type="text" id="loginRef" name="reference" placeholder="e.g. A1B2C3D4" style="text-transform: uppercase;" required />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Access My Reservation</button>
+      </form>
+    </div>
+
+    <!-- DASHBOARD PANEL -->
+    <div id="guestDashboard" class="hidden">
+      <div class="portal-grid">
+        <!-- LEFT COLUMN: RESERVATION DETAILS, PAYMENT & CANCELLATION -->
+        <div class="portal-card">
+          <span class="section-label">Reservation Details</span>
+          <h2 class="section-title" id="dashGuestName" style="font-size: 2rem;">Welcome, Guest</h2>
+          <div id="statusBadge" style="margin-bottom: 1rem; font-weight: 700; color: var(--burgundy); font-size: 0.85rem;"></div>
+
+          <div class="summary-row"><span>Reference #:</span><strong id="dashRef"></strong></div>
+          <div class="summary-row"><span>Room Selected:</span><strong id="dashRoom"></strong></div>
+          <div class="summary-row"><span>Nightly Rate:</span><span id="dashRate"></span></div>
+          <div class="summary-row"><span>Stay Dates:</span><span id="dashDates"></span></div>
+          <div class="summary-row"><span>Guests:</span><span id="dashGuests"></span></div>
+          <div class="summary-row"><span>Payment Method:</span><strong id="dashPayment" style="color: var(--burgundy);"></strong></div>
+          <div class="summary-row"><span>Room Subtotal:</span><strong id="dashRoomSub"></strong></div>
+          <div class="summary-row"><span>Food &amp; Activities Total:</span><strong id="dashExtrasTotal"></strong></div>
+          <div class="summary-row summary-total"><span>Grand Total:</span><span id="dashGrandTotal"></span></div>
+
+          <div style="margin-top: 1.2rem;">
+            <strong style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--burgundy);">Booked Food &amp; Activities:</strong>
+            <p id="dashExtrasList" style="font-size: 0.82rem; color: var(--text-mid); margin-top: 0.4rem; line-height: 1.6;">None booked yet.</p>
+          </div>
+
+          <!-- PAYMENT SECTION -->
+          <div class="payment-box" id="paymentSection">
+            <strong style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--burgundy);">How Would You Like to Pay?</strong>
+            <select id="paymentMethodSelect">
+              <option value="Pay at Hotel (Reception)">Pay at Hotel (Upon Check-In)</option>
+              <option value="Credit / Debit Card">Credit / Debit Card</option>
+              <option value="Bank Transfer">Bank Transfer</option>
+            </select>
+
+            <!-- CARD FORM -->
+            <div id="cardFields" class="hidden" style="background: #fff; padding: 1rem; border-radius: 6px; border: 1px solid #e2e8f0; margin-top: 0.5rem;">
+              <label style="font-size: 0.75rem; font-weight: 600; color: #4a5568;">Card number</label>
+              <input type="text" id="cardNumber" placeholder="0000 1234 1234 0000" maxlength="19" />
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem;">
+                <div>
+                  <label style="font-size: 0.75rem; font-weight: 600; color: #4a5568;">Expiration date</label>
+                  <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5" />
+                </div>
+                <div>
+                  <label style="font-size: 0.75rem; font-weight: 600; color: #4a5568;">CVV</label>
+                  <input type="password" id="cardCvv" placeholder="123" maxlength="4" />
+                </div>
+              </div>
+            </div>
+
+            <!-- BANK TRANSFER FORM -->
+            <div id="eftFields" class="hidden" style="background: #fff; padding: 1rem; border-radius: 6px; border: 1px solid #e2e8f0; margin-top: 0.5rem;">
+              <label style="font-size: 0.75rem; font-weight: 600; color: #4a5568;">Account holder name</label>
+              <input type="text" id="bankHolder" placeholder="Enter account holder full name" />
+
+              <label style="font-size: 0.75rem; font-weight: 600; color: #4a5568;">Bank name</label>
+              <select id="bankName">
+                <option value="">Select your bank</option>
+                <option value="FNB" data-branch="250655">FNB (First National Bank)</option>
+                <option value="Standard Bank" data-branch="051001">Standard Bank</option>
+                <option value="Absa" data-branch="632005">Absa</option>
+                <option value="Nedbank" data-branch="198765">Nedbank</option>
+                <option value="Capitec" data-branch="470010">Capitec Bank</option>
+                <option value="Investec" data-branch="580105">Investec</option>
+                <option value="TymeBank" data-branch="678910">TymeBank</option>
+              </select>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem;">
+                <div>
+                  <label style="font-size: 0.75rem; font-weight: 600; color: #4a5568;">Account number</label>
+                  <input type="text" id="bankAccount" placeholder="0000 0000 000" maxlength="16" />
+                </div>
+                <div>
+                  <label style="font-size: 0.75rem; font-weight: 600; color: #4a5568;">Branch code</label>
+                  <input type="text" id="bankBranch" placeholder="250655" maxlength="6" />
+                </div>
+                <div>
+                  <label style="font-size: 0.78rem; font-weight: 600; color: #4a5568;">Branch code</label>
+                  <input type="text" id="bankBranch" placeholder="250655" maxlength="6" />
+                </div>
+              </div>
+            </div>
+
+            <button type="button" id="savePaymentBtn" class="btn btn-primary" style="width: 100%; margin-top: 0.8rem;">Pay</button>
+          </div>
+
+          <!-- CANCELLATION POLICY -->
+          <div class="policy-box">
+            <strong>Cancellation Policy:</strong>
+            <p style="margin-top: 0.3rem;">
+              • <strong>First 5 days of registration:</strong> 100% Free Cancellation (R 0.00 fee).<br>
+              • <strong>After 5 days of registration:</strong> A reasonable <strong>25% administrative fee</strong> applies.
+            </p>
+            <p id="cancellationEstimate" style="margin-top: 0.6rem; font-weight: 600; color: var(--burgundy);"></p>
+          </div>
+          <button type="button" id="cancelBookingBtn" class="btn btn-danger">Cancel Reservation</button>
+        </div>
+
+        <div class="portal-card" id="extrasBookingCard">
+          <span class="section-label">Enhance Your Stay</span>
+          <h3 style="font-family: var(--ff-serif); font-size: 1.8rem; color: var(--burgundy); margin-bottom: 1rem;">Add Dining &amp; Activities</h3>
+
+          <div class="extra-item">
+            <div><strong>Continental Morning Breakfast</strong><br><small>R 180.00</small></div>
+
+            <button class="btn btn-primary" onclick="bookExtra('Continental Morning Breakfast', 180)">Add</button>
+          </div>
+          <div class="extra-item">
+            <div><strong>Braised Short Rib Dinner</strong><br><small>R 320.00</small></div>
+            <button class="btn btn-primary" onclick="bookExtra('Braised Short Rib Dinner', 320)">Add</button>
+          </div>
+          <div class="extra-item">
+            <div><strong>Rose Petal Martini</strong><br><small>R 140.00</small></div>
+            <button class="btn btn-primary" onclick="bookExtra('Rose Petal Martini', 140)">Add</button>
+          </div>
+          <div class="extra-item">
+            <div><strong>Traditional Finnish Sauna Session</strong><br><small>R 250.00</small></div>
+            <button class="btn btn-primary" onclick="bookExtra('Traditional Finnish Sauna Session', 250)">Add</button>
+          </div>
+          <div class="extra-item">
+            <div><strong>Rooftop Jacuzzi (Private Sunset Hour)</strong><br><small>R 350.00</small></div>
+            <button class="btn btn-primary" onclick="bookExtra('Rooftop Jacuzzi (Private Sunset Hour)', 350)">Add</button>
+          </div>
+          <div class="extra-item">
+            <div><strong>Kids' Club &amp; WaterSlide Full Day Pass</strong><br><small>R 150.00</small></div>
+            <button class="btn btn-primary" onclick="bookExtra('Kids Club & WaterSlide Pass', 150)">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="guest.js"></script>
+</body>
+</html>
