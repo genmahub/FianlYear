@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
+import javax.swing.table.*;
 import java.util.List;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
@@ -93,6 +94,9 @@ public class AP extends JFrame {
     private Booking lastBooking;
     private JTabbedPane tabs;
     private javax.swing.Timer alertAutoRefreshTimer;
+        private DefaultTableModel bookingTableModel;
+    private JTable bookingsTable;
+
 
     public AP() {
         super("Imperial Solis Hotel | Management & Concierge System");
@@ -653,79 +657,175 @@ JButton home = goldButton("BACK TO DASHBOARD"); home.setAlignmentX(.5f); home.ad
 details.add(check); details.add(title); details.add(Box.createVerticalStrut(20)); details.add(info); details.add(Box.createVerticalStrut(20)); details.add(home);
 panel.add(details); setContentPane(centered(panel)); revalidate(); repaint();
 }
+
+
+
 private JPanel bookingsPanel() {
-JPanel p = new JPanel(new BorderLayout(10, 10));
-p.setBackground(CREAM); p.setBorder(new EmptyBorder(22, 25, 22, 25));
-JPanel topBar = new JPanel(new BorderLayout(15, 0)); topBar.setBackground(CREAM);
-topBar.add(sectionTitle("BOOKINGS & GUEST PORTAL SYNC"), BorderLayout.WEST);
-JPanel searchPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 8, 0)); searchPanel.setBackground(CREAM);
-searchPanel.add(label("Search (Name, Email or Ref #):"));
-searchField = compactField("");
-searchField.getDocument().addDocumentListener(new DocumentListener() {
-public void insertUpdate(DocumentEvent e) { refreshBookingList(); }
-public void removeUpdate(DocumentEvent e) { refreshBookingList(); }
-public void changedUpdate(DocumentEvent e) { refreshBookingList(); }
-});
-searchPanel.add(searchField);
-topBar.add(searchPanel, BorderLayout.EAST);
-p.add(topBar, BorderLayout.NORTH);
-bookingList = new JList<>(bookingListModel);
-bookingList.setFont(new Font("SansSerif", Font.PLAIN, 13));
-refreshBookingList();
-p.add(new JScrollPane(bookingList), BorderLayout.CENTER);
-JPanel actions = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 0)); actions.setBackground(CREAM);
-JButton addExtrasShortcut = goldButton("ORDER FOOD / EXTRAS");
-addExtrasShortcut.addActionListener(e -> {
-int idx = bookingList.getSelectedIndex();
-if (idx >= 0 && idx < displayedBookings.size() && orderBookingChoice != null) {
-int fullIdx = bookings.indexOf(displayedBookings.get(idx));
-if (fullIdx >= 0) orderBookingChoice.setSelectedIndex(fullIdx);
+    JPanel p = new JPanel(new BorderLayout(12, 12));
+    p.setBackground(CREAM);
+    p.setBorder(new EmptyBorder(22, 25, 22, 25));
+
+    JPanel topBar = new JPanel(new BorderLayout(15, 0));
+    topBar.setBackground(CREAM);
+    topBar.add(sectionTitle("BOOKINGS & GUEST PORTAL SYNC"), BorderLayout.WEST);
+
+    JPanel searchPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 8, 0));
+    searchPanel.setBackground(CREAM);
+    searchPanel.add(label("Search (Name, Email or Ref #):"));
+    searchField = compactField("");
+    searchField.getDocument().addDocumentListener(new DocumentListener() {
+        public void insertUpdate(DocumentEvent e) { refreshBookingList(); }
+        public void removeUpdate(DocumentEvent e) { refreshBookingList(); }
+        public void changedUpdate(DocumentEvent e) { refreshBookingList(); }
+    });
+    searchPanel.add(searchField);
+    topBar.add(searchPanel, BorderLayout.EAST);
+    p.add(topBar, BorderLayout.NORTH);
+
+    // Table Columns
+    String[] columns = {
+        "Ref #", "Status", "Guest Name", "Email", "Room Type",
+        "Check-In", "Check-Out", "Payment", "Extras", "Total (ZAR)"
+    };
+
+    bookingTableModel = new DefaultTableModel(columns, 0) {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false; // Prevent inline editing
+        }
+    };
+
+    bookingsTable = new JTable(bookingTableModel);
+    bookingsTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    bookingsTable.setRowHeight(32);
+    bookingsTable.setFont(new Font("SansSerif", Font.PLAIN, 12));
+    bookingsTable.setForeground(INK);
+    bookingsTable.setGridColor(new Color(225, 215, 195));
+    bookingsTable.setShowVerticalLines(false);
+    bookingsTable.setFillsViewportHeight(true);
+
+    // Header Styling (Wine & Gold theme)
+    JTableHeader header = bookingsTable.getTableHeader();
+    header.setBackground(WINE);
+    header.setForeground(GOLD);
+    header.setFont(new Font("SansSerif", Font.BOLD, 12));
+    header.setPreferredSize(new Dimension(header.getWidth(), 36));
+    header.setReorderingAllowed(false);
+
+    // Column Widths
+    int[] colWidths = {75, 110, 155, 150, 145, 90, 90, 120, 140, 100};
+    for (int i = 0; i < colWidths.length; i++) {
+        bookingsTable.getColumnModel().getColumn(i).setPreferredWidth(colWidths[i]);
+    }
+
+    // Custom Renderer for Status Badges, Alignment & Alternating Rows
+    DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer() {
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value,
+                boolean isSelected, boolean hasFocus, int row, int column) {
+            Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+            setBorder(new EmptyBorder(0, 8, 0, 8));
+
+            String statusVal = table.getValueAt(row, 1).toString();
+            boolean isCancelled = statusVal.startsWith("CANCELLED");
+
+            if (isSelected) {
+                c.setBackground(new Color(235, 215, 175));
+                c.setForeground(WINE);
+            } else {
+                c.setBackground(row % 2 == 0 ? Color.WHITE : new Color(252, 249, 242));
+                if (column == 1) {
+                    c.setForeground(isCancelled ? new Color(165, 30, 30) : new Color(28, 115, 60));
+                    setFont(getFont().deriveFont(Font.BOLD));
+                } else if (column == 0 || column == 9) {
+                    c.setForeground(WINE);
+                    setFont(getFont().deriveFont(Font.BOLD));
+                } else {
+                    c.setForeground(INK);
+                }
+            }
+
+            // Right-align Total (ZAR), center Ref # & Dates
+            if (column == 9) setHorizontalAlignment(SwingConstants.RIGHT);
+            else if (column == 0 || column == 5 || column == 6) setHorizontalAlignment(SwingConstants.CENTER);
+            else setHorizontalAlignment(SwingConstants.LEFT);
+
+            return c;
+        }
+    };
+
+    for (int i = 0; i < bookingsTable.getColumnCount(); i++) {
+        bookingsTable.getColumnModel().getColumn(i).setCellRenderer(cellRenderer);
+    }
+
+    refreshBookingList();
+
+    JScrollPane tableScroll = new JScrollPane(bookingsTable);
+    tableScroll.setBorder(new LineBorder(GOLD, 1, true));
+    p.add(tableScroll, BorderLayout.CENTER);
+
+    JPanel actions = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 0));
+    actions.setBackground(CREAM);
+
+    JButton addExtrasShortcut = goldButton("ORDER FOOD / EXTRAS");
+    addExtrasShortcut.addActionListener(e -> {
+        int idx = bookingsTable.getSelectedRow();
+        if (idx >= 0 && idx < displayedBookings.size() && orderBookingChoice != null) {
+            int fullIdx = bookings.indexOf(displayedBookings.get(idx));
+            if (fullIdx >= 0) orderBookingChoice.setSelectedIndex(fullIdx);
+        }
+        if (tabs != null) tabs.setSelectedIndex(4);
+    });
+
+    JButton refresh = goldButton("SYNC WEBSITE & PORTAL");
+    refresh.addActionListener(e -> {
+        loadBookings();
+        refreshBookingList();
+        refreshOrderBookingDropdown();
+        message("Synced with hotel_db (Website & Guest Portal updates loaded).");
+    });
+
+    JButton cancelBtn = wineButton("CANCEL (5-DAY POLICY)");
+    cancelBtn.addActionListener(e -> cancelSelectedBooking());
+
+    actions.add(addExtrasShortcut);
+    actions.add(refresh);
+    actions.add(cancelBtn);
+    p.add(actions, BorderLayout.SOUTH);
+    return p;
 }
-if (tabs != null) tabs.setSelectedIndex(4);
-});
-JButton refresh = goldButton("SYNC WEBSITE & PORTAL");
-refresh.addActionListener(e -> {
-loadBookings();
-refreshBookingList();
-refreshOrderBookingDropdown();
-message("Synced with hotel_db (Website & Guest Portal updates loaded).");
-});
-JButton cancelBtn = wineButton("CANCEL (5-DAY POLICY)");
-cancelBtn.addActionListener(e -> cancelSelectedBooking());
-actions.add(addExtrasShortcut); actions.add(refresh); actions.add(cancelBtn);
-p.add(actions, BorderLayout.SOUTH);
-return p;
-}
+
 private void cancelSelectedBooking() {
-int idx = bookingList.getSelectedIndex();
-if (idx < 0 || displayedBookings.isEmpty()) {
-message("Please select a booking from the list to cancel.");
-return;
-}
-Booking selected = displayedBookings.get(idx);
-if ("Cancelled".equalsIgnoreCase(selected.status)) {
-message("Booking " + selected.id + " is already cancelled.");
-return;
-}
-long daysElapsed = ChronoUnit.DAYS.between(selected.createdAt.toLocalDate(), LocalDate.now());
-double fee = (daysElapsed <= 5) ? 0.0 : Math.round(selected.total * 0.25 * 100.0) / 100.0;
-String policyMsg = (fee == 0)
-? "Registered " + daysElapsed + " day(s) ago (within 5 days). Cancel FREE of charge?"
-: "Registered " + daysElapsed + " day(s) ago (after 5 days). Apply 25% cancellation fee of R " + money(fee) + "?";
-if (JOptionPane.showConfirmDialog(this, policyMsg, "Cancel Booking", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-String sql = "UPDATE bookings SET status = 'Cancelled', cancellation_fee = ?, cancelled_at = NOW() WHERE booking_id = ?";
-try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
-ps.setDouble(1, fee);
-ps.setString(2, selected.id);
-ps.executeUpdate();
-selected.status = "Cancelled";
-selected.cancellationFee = fee;
-refreshBookingList();
-refreshOrderBookingDropdown();
-message("Booking " + selected.id + " marked as Cancelled. Fee applied: R " + money(fee));
-} catch (SQLException ex) {
-message("Database cancel error: " + ex.getMessage());
-}
+    int idx = bookingsTable.getSelectedRow();
+    if (idx < 0 || displayedBookings.isEmpty()) {
+        message("Please select a booking row from the table to cancel.");
+        return;
+    }
+    Booking selected = displayedBookings.get(idx);
+    if ("Cancelled".equalsIgnoreCase(selected.status)) {
+        message("Booking " + selected.id + " is already cancelled.");
+        return;
+    }
+    long daysElapsed = ChronoUnit.DAYS.between(selected.createdAt.toLocalDate(), LocalDate.now());
+    double fee = (daysElapsed <= 5) ? 0.0 : Math.round(selected.total * 0.25 * 100.0) / 100.0;
+    String policyMsg = (fee == 0)
+        ? "Registered " + daysElapsed + " day(s) ago (within 5 days). Cancel FREE of charge?"
+        : "Registered " + daysElapsed + " day(s) ago (after 5 days). Apply 25% cancellation fee of R " + money(fee) + "?";
+
+    if (JOptionPane.showConfirmDialog(this, policyMsg, "Cancel Booking", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+        String sql = "UPDATE bookings SET status = 'Cancelled', cancellation_fee = ?, cancelled_at = NOW() WHERE booking_id = ?";
+        try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setDouble(1, fee);
+            ps.setString(2, selected.id);
+            ps.executeUpdate();
+            selected.status = "Cancelled";
+            selected.cancellationFee = fee;
+            refreshBookingList();
+            refreshOrderBookingDropdown();
+            message("Booking " + selected.id + " marked as Cancelled. Fee applied: R " + money(fee));
+        } catch (SQLException ex) {
+            message("Database cancel error: " + ex.getMessage());
+        }
 }
 }
 private JPanel reviewsPanel() {
@@ -938,25 +1038,40 @@ single.add(new String[]{"INFO", "NOTICE", title, body});
 return groupedNotificationCard(title, single);
 }
 private void refreshBookingList() {
-bookingListModel.clear();
-displayedBookings.clear();
-String query = (searchField != null) ? searchField.getText().trim().toLowerCase() : "";
-for (Booking b : bookings) {
-boolean matches = query.isEmpty() || b.id.toLowerCase().contains(query) || b.guest.toLowerCase().contains(query) || b.email.toLowerCase().contains(query);
-if (matches) {
-displayedBookings.add(b);
-String statusTag = "Cancelled".equalsIgnoreCase(b.status)
-? "[CANCELLED | Fee: R " + money(b.cancellationFee) + "]"
-: "[ACTIVE]";
-String extrasTag = (b.extrasSummary != null && !b.extrasSummary.isEmpty()) ? "  |  Extras: [" + b.extrasSummary + "]" : "";
-bookingListModel.addElement(
-b.id + " " + statusTag + "  |  " + b.guest + " (" + b.email + ")  |  " + b.room + "  |  Pay: " + b.payment + extrasTag + "  |  Total: R " + money(b.total)
-);
-}
-}
-if (bookingListModel.isEmpty()) {
-bookingListModel.addElement(query.isEmpty() ? "No bookings yet." : "No bookings matching '" + searchField.getText().trim() + "'.");
-}
+    if (bookingTableModel == null) return;
+    bookingTableModel.setRowCount(0);
+    displayedBookings.clear();
+    String query = (searchField != null) ? searchField.getText().trim().toLowerCase() : "";
+
+    for (Booking b : bookings) {
+        boolean matches = query.isEmpty()
+            || b.id.toLowerCase().contains(query)
+            || b.guest.toLowerCase().contains(query)
+            || b.email.toLowerCase().contains(query);
+
+        if (matches) {
+            displayedBookings.add(b);
+            String statusText = "Cancelled".equalsIgnoreCase(b.status)
+                ? "CANCELLED (R " + money(b.cancellationFee) + ")"
+                : "ACTIVE";
+            String extrasText = (b.extrasSummary != null && !b.extrasSummary.isEmpty())
+                ? b.extrasSummary
+                : "None";
+
+            bookingTableModel.addRow(new Object[]{
+                b.id,
+                statusText,
+                b.guest,
+                b.email,
+                b.room,
+                b.in,
+                b.out,
+                b.payment,
+                extrasText,
+                "R " + money(b.total)
+            });
+        }
+    }
 }
 private void loadBookings() {
 bookings.clear();
